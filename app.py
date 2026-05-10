@@ -8,60 +8,42 @@ st.set_page_config(page_title="Swing Trading Scanner", page_icon="📈", layout=
 
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600;700&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap');
 
-html, body, .stApp { background-color: #050f05 !important; }
+html, body, .stApp { background-color: #0a0e1a !important; }
 
-.terminal-header {
-    background: #050f05;
-    border: 1px solid #00ff41;
-    border-radius: 10px;
+.header {
+    background: linear-gradient(135deg, #0d1228 0%, #0a0e1a 100%);
+    border: 1px solid #1e3a5f;
+    border-top: 3px solid #2d7dd2;
+    border-radius: 12px;
     padding: 2rem 2.5rem;
     margin-bottom: 1.5rem;
-    font-family: 'Share Tech Mono', monospace;
 }
-.terminal-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 1.2rem;
+.header-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #2d7dd2;
+    margin-bottom: 0.5rem;
 }
-.dot { width: 10px; height: 10px; border-radius: 50%; }
-.dot-r { background: #ff5f57; }
-.dot-y { background: #febc2e; }
-.dot-g { background: #28c840; }
-.terminal-path {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.72rem;
-    color: #00ff41;
-    margin-left: 8px;
-    opacity: 0.7;
-}
-.terminal-title {
+.header-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 3rem;
-    color: #00ff41;
+    color: #ffffff;
     letter-spacing: 4px;
     line-height: 1;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
 }
-.terminal-title span { color: #ffffff; }
-.terminal-subtitle {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.75rem;
-    color: #00aa2c;
+.header-title span { color: #2d7dd2; }
+.header-info {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    color: #4a6080;
     margin-top: 0.5rem;
 }
-.terminal-cursor {
-    display: inline-block;
-    width: 8px;
-    height: 14px;
-    background: #00ff41;
-    margin-left: 4px;
-    animation: blink 1s infinite;
-    vertical-align: middle;
-}
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
 .metrics {
     display: grid;
@@ -70,47 +52,50 @@ html, body, .stApp { background-color: #050f05 !important; }
     margin-bottom: 1.8rem;
 }
 .metric {
-    background: #050f05;
-    border: 1px solid #00ff41;
-    border-radius: 8px;
-    padding: 1rem;
+    background: #0d1228;
+    border: 1px solid #1e3a5f;
+    border-radius: 10px;
+    padding: 1.2rem;
     text-align: center;
 }
 .metric-val {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 2rem;
-    color: #00ff41;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    color: #2d7dd2;
     line-height: 1;
 }
 .metric-val.white { color: #ffffff; }
-.metric-val.yellow { color: #febc2e; }
+.metric-val.yellow { color: #f0c040; }
 .metric-lbl {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.62rem;
-    color: #00aa2c;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #4a6080;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-top: 6px;
 }
 
 .market-ok {
-    background: #050f05;
-    border: 1px solid #00ff41;
+    background: #0a1a0a;
+    border: 1px solid #1a4a1a;
+    border-left: 3px solid #2ecc71;
     border-radius: 8px;
     padding: 0.8rem 1.2rem;
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 0.8rem;
-    color: #00ff41;
+    color: #2ecc71;
     margin-bottom: 1rem;
 }
 .market-warn {
-    background: #1a0f00;
-    border: 1px solid #febc2e;
+    background: #1a1200;
+    border: 1px solid #4a3a00;
+    border-left: 3px solid #f0c040;
     border-radius: 8px;
     padding: 0.8rem 1.2rem;
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 0.8rem;
-    color: #febc2e;
+    color: #f0c040;
     margin-bottom: 1rem;
 }
 
@@ -119,161 +104,174 @@ html, body, .stApp { background-color: #050f05 !important; }
     align-items: center;
     gap: 12px;
     margin: 1.8rem 0 1rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid #00ff41;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid #1e3a5f;
 }
 .section-badge {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.72rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
     letter-spacing: 2px;
-    padding: 3px 10px;
+    padding: 4px 12px;
     border-radius: 4px;
-    background: #00ff41;
-    color: #050f05;
+    background: #2d7dd2;
+    color: #ffffff;
+    text-transform: uppercase;
 }
 .section-badge.watch {
-    background: #050f05;
-    color: #febc2e;
-    border: 1px solid #febc2e;
+    background: transparent;
+    color: #f0c040;
+    border: 1px solid #f0c040;
 }
 .section-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.9rem;
-    color: #00ff41;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
     letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .stock-card {
-    background: #050f05;
-    border: 1px solid #00ff41;
+    background: #0d1228;
+    border: 1px solid #1e3a5f;
+    border-left: 3px solid #2d7dd2;
     border-radius: 10px;
-    padding: 1.2rem 1.5rem;
+    padding: 1.3rem 1.5rem;
     margin-bottom: 0.8rem;
     display: grid;
     grid-template-columns: auto 1fr auto;
     gap: 1.5rem;
     align-items: start;
 }
-.stock-card.watch {
-    border-color: #febc2e;
-    opacity: 0.9;
-}
+.stock-card.watch { border-left-color: #f0c040; }
 
 .stock-rank {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 1.8rem;
-    color: #1a3a1a;
-    line-height: 1;
-    padding-top: 4px;
-    min-width: 30px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #1e3a5f;
+    padding-top: 6px;
+    min-width: 24px;
 }
 
 .stock-ticker {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2rem;
-    color: #00ff41;
+    color: #ffffff;
     letter-spacing: 3px;
     line-height: 1;
-    margin-bottom: 3px;
+    margin-bottom: 4px;
 }
-.stock-card.watch .stock-ticker { color: #febc2e; }
+.stock-card.watch .stock-ticker { color: #f0c040; }
 
 .stock-pattern {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 0.72rem;
-    color: #00aa2c;
-    margin-bottom: 8px;
+    font-weight: 500;
+    color: #4a6080;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .stock-pills {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-top: 6px;
 }
 .pill {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 0.68rem;
+    font-weight: 500;
     padding: 3px 10px;
-    border-radius: 3px;
-    border: 1px solid #1a3a1a;
-    color: #00aa2c;
+    border-radius: 4px;
+    background: #0a0e1a;
+    border: 1px solid #1e3a5f;
+    color: #4a6080;
 }
-.pill.highlight {
-    border-color: #00ff41;
-    color: #00ff41;
+.pill.blue {
+    border-color: #2d7dd2;
+    color: #2d7dd2;
 }
-.pill.warn {
-    border-color: #febc2e;
-    color: #febc2e;
+.pill.white {
+    border-color: #3a5070;
+    color: #a0b4c8;
 }
 
-.stock-right { text-align: right; min-width: 150px; }
+.stock-right { text-align: right; min-width: 160px; }
 .stock-price {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 1.6rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
     color: #ffffff;
     line-height: 1;
+    margin-bottom: 4px;
 }
 .stock-stop {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
-    color: #ff5f57;
-    margin-top: 4px;
+    font-weight: 600;
+    color: #e74c3c;
+    margin-top: 3px;
 }
 .stock-target {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
-    color: #00ff41;
-    margin-top: 2px;
+    font-weight: 600;
+    color: #2ecc71;
+    margin-top: 3px;
 }
 .stock-rr {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 0.72rem;
-    color: #febc2e;
-    margin-top: 4px;
-}
-.stock-rs {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.72rem;
-    color: #00aa2c;
-    margin-top: 2px;
+    font-weight: 700;
+    color: #2d7dd2;
+    margin-top: 5px;
+    background: #0a0e1a;
+    border: 1px solid #1e3a5f;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
 }
 .stock-checks {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.7rem;
-    color: #1a3a1a;
-    margin-top: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    color: #1e3a5f;
+    margin-top: 6px;
 }
-.stock-checks span { color: #00ff41; }
+.stock-checks span { color: #2d7dd2; font-weight: 700; }
 
 .failed-checks {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.68rem;
-    color: #ff5f57;
-    margin-top: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    color: #e74c3c;
+    margin-top: 8px;
+    line-height: 1.6;
 }
 
 .empty {
     text-align: center;
     padding: 2.5rem;
-    border: 1px dashed #1a3a1a;
+    border: 1px dashed #1e3a5f;
     border-radius: 10px;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.8rem;
-    color: #1a3a1a;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #1e3a5f;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 div[data-testid="stButton"] > button {
-    background: #00ff41 !important;
-    color: #050f05 !important;
-    font-family: 'Share Tech Mono', monospace !important;
-    font-size: 0.95rem !important;
-    letter-spacing: 4px !important;
+    background: #2d7dd2 !important;
+    color: #ffffff !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
     border: none !important;
-    border-radius: 6px !important;
+    border-radius: 8px !important;
     padding: 0.8rem !important;
     width: 100% !important;
 }
@@ -281,13 +279,11 @@ div[data-testid="stButton"] > button:hover { opacity: 0.85 !important; }
 
 .stDownloadButton > button {
     background: transparent !important;
-    color: #00ff41 !important;
-    border: 1px solid #1a3a1a !important;
-    font-family: 'Share Tech Mono', monospace !important;
+    color: #2d7dd2 !important;
+    border: 1px solid #1e3a5f !important;
+    font-family: 'Inter', sans-serif !important;
     font-size: 0.78rem !important;
 }
-
-div[data-testid="stSpinner"] { color: #00ff41 !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -295,22 +291,14 @@ from datetime import datetime
 now = datetime.now()
 
 st.markdown(f"""
-<div class="terminal-header">
-    <div class="terminal-bar">
-        <div class="dot dot-r"></div>
-        <div class="dot dot-y"></div>
-        <div class="dot dot-g"></div>
-        <span class="terminal-path">~/swing-scanner · IBD Methodology · 14-check system</span>
-    </div>
-    <div class="terminal-title">Swing <span>Scanner</span></div>
-    <div class="terminal-subtitle">
-        > {now.strftime('%Y-%m-%d %H:%M:%S')} · Capital ${200000:,} · Risk 1% · Stop 7.3%
-        <span class="terminal-cursor"></span>
-    </div>
+<div class="header">
+    <div class="header-eyebrow">Equity Scanner · IBD Methodology · 14-Check System</div>
+    <div class="header-title">Swing Trading <span>Scanner</span></div>
+    <div class="header-info">{now.strftime('%A, %d %B %Y · %H:%M')} &nbsp;·&nbsp; Capital $200,000 &nbsp;·&nbsp; Risk 1% per trade &nbsp;·&nbsp; Stop 7.3%</div>
 </div>
 """, unsafe_allow_html=True)
 
-if st.button("▶  RUN SCAN"):
+if st.button("📈  RUN SCAN — ESCANEAR HOY"):
     import sys
     sys.path.insert(0, "/mount/src/swing-trading")
 
@@ -325,22 +313,21 @@ if st.button("▶  RUN SCAN"):
         calculate_stop, calculate_position_size, check_rr_and_earnings,
     )
 
-    with st.spinner("> Checking market conditions..."):
+    with st.spinner("Checking market conditions..."):
         market = check_market_condition()
 
     if market["passes"]:
-        st.markdown(f'<div class="market-ok">✓ MARKET OK — {market["details"]}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="market-ok">✓ Market confirmed uptrend — {market["details"]}</div>', unsafe_allow_html=True)
     else:
-        st.markdown(f'<div class="market-warn">⚠ MARKET WARNING — {market["details"]}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="market-warn">⚠ Market warning — {market["details"]}</div>', unsafe_allow_html=True)
 
-    with st.spinner("> Downloading SPY..."):
+    with st.spinner("Downloading SPY benchmark..."):
         spy_df = yf.download("SPY", period=f"{LOOKBACK_DAYS}d", progress=False, auto_adjust=True)
         if isinstance(spy_df.columns, pd.MultiIndex):
             spy_df.columns = spy_df.columns.droplevel(1)
         spy_prices = spy_df["Close"]
 
     tickers = get_full_universe()
-    st.markdown(f'<div class="market-ok">> Universe loaded: {len(tickers)} tickers</div>', unsafe_allow_html=True)
 
     all_data = {}
     progress_bar = st.progress(0)
@@ -365,8 +352,6 @@ if st.button("▶  RUN SCAN"):
         except Exception:
             pass
         progress_bar.progress(min((i + batch_size) / len(tickers), 1.0))
-
-    st.markdown(f'<div class="market-ok">> {len(all_data)} tickers with valid data · Computing RS Ratings...</div>', unsafe_allow_html=True)
 
     all_prices = {t: df["Close"] for t, df in all_data.items()}
     rs_ratings = compute_rs_ratings(all_prices)
@@ -463,7 +448,7 @@ if st.button("▶  RUN SCAN"):
             <div class="metric-lbl">Analizados</div>
         </div>
         <div class="metric">
-            <div class="metric-val white" style="font-size:1.4rem">{now.strftime('%H:%M')}</div>
+            <div class="metric-val white" style="font-size:1.5rem">{now.strftime('%H:%M')}</div>
             <div class="metric-lbl">Timestamp</div>
         </div>
     </div>
@@ -472,13 +457,13 @@ if st.button("▶  RUN SCAN"):
     def render_confirmed(stocks):
         st.markdown("""
         <div class="section-header">
-            <span class="section-badge">CONFIRMED</span>
-            <span class="section-label">READY TO TRADE — 14/14 CHECKS</span>
+            <span class="section-badge">Confirmados</span>
+            <span class="section-label">Listos para operar · 14/14 checks</span>
         </div>
         """, unsafe_allow_html=True)
 
         if not stocks:
-            st.markdown('<div class="empty">No candidates pass all 14 checks today</div>', unsafe_allow_html=True)
+            st.markdown('<div class="empty">Ningún candidato pasa los 14 checks hoy</div>', unsafe_allow_html=True)
             return
 
         cards = ""
@@ -490,21 +475,21 @@ if st.button("▶  RUN SCAN"):
                 <div class="stock-rank">#{i}</div>
                 <div>
                     <div class="stock-ticker">{c['ticker']}</div>
-                    <div class="stock-pattern">{c['pattern']} · {c['base_weeks']} weeks base · RS {c['rs_rating']:.0f}</div>
+                    <div class="stock-pattern">{c['pattern']} · {c['base_weeks']}w base · RS Rating {c['rs_rating']:.0f}</div>
                     <div class="stock-pills">
-                        <span class="pill highlight">PIVOT ${c['pivot']}</span>
-                        <span class="pill highlight">DIST {c['dist_pct']:+.1f}%</span>
-                        <span class="pill">{c['shares']} shares</span>
-                        <span class="pill">${c['position_value']:,.0f} position</span>
+                        <span class="pill blue">Pivot ${c['pivot']}</span>
+                        <span class="pill blue">Dist. {c['dist_pct']:+.1f}%</span>
+                        <span class="pill white">{c['shares']} acciones</span>
+                        <span class="pill white">${c['position_value']:,.0f} posición</span>
                         <span class="pill">Earnings: {c['earnings_date']}</span>
                     </div>
                 </div>
                 <div class="stock-right">
                     <div class="stock-price">${c['entry']}</div>
-                    <div class="stock-stop">▼ STOP ${c['stop']} (-{stop_pct:.1f}%)</div>
-                    <div class="stock-target">▲ TARGET ${c['target']} (+{target_pct:.1f}%)</div>
+                    <div class="stock-stop">▼ Stop ${c['stop']} (-{stop_pct:.1f}%)</div>
+                    <div class="stock-target">▲ Target ${c['target']} (+{target_pct:.1f}%)</div>
                     <div class="stock-rr">R:R {c['rr']:.1f}:1</div>
-                    <div class="stock-checks"><span>{c['checks_passed']}</span>/14 checks</div>
+                    <div class="stock-checks"><span>{c['checks_passed']}</span>/14 checks · Score {c['score']:.0f}</div>
                 </div>
             </div>
             """
@@ -513,30 +498,30 @@ if st.button("▶  RUN SCAN"):
     def render_watchlist(stocks):
         st.markdown("""
         <div class="section-header">
-            <span class="section-badge watch">WATCHLIST</span>
-            <span class="section-label">MISSING 1-2 CHECKS</span>
+            <span class="section-badge watch">Vigilancia</span>
+            <span class="section-label">Faltan 1-2 checks</span>
         </div>
         """, unsafe_allow_html=True)
 
         if not stocks:
-            st.markdown('<div class="empty">No watchlist candidates today</div>', unsafe_allow_html=True)
+            st.markdown('<div class="empty">Sin candidatos en vigilancia hoy</div>', unsafe_allow_html=True)
             return
 
         cards = ""
         for i, c in enumerate(stocks, 1):
-            failed_str = " · ".join(c["failed_checks"])
+            failed_str = "<br>".join([f"✗ {f}" for f in c["failed_checks"]])
             cards += f"""
             <div class="stock-card watch">
                 <div class="stock-rank">#{i}</div>
                 <div>
                     <div class="stock-ticker">{c['ticker']}</div>
                     <div class="stock-pattern">{c['pattern']} · {c['base_weeks']}w base · RS {c['rs_rating']:.0f}</div>
-                    <div class="failed-checks">✗ {failed_str}</div>
+                    <div class="failed-checks">{failed_str}</div>
                 </div>
                 <div class="stock-right">
                     <div class="stock-price">${c['entry']}</div>
-                    <div class="stock-stop">▼ STOP ${c['stop']}</div>
-                    <div class="stock-target">▲ TARGET ${c['target']}</div>
+                    <div class="stock-stop">▼ Stop ${c['stop']}</div>
+                    <div class="stock-target">▲ Target ${c['target']}</div>
                     <div class="stock-rr">R:R {c['rr']:.1f}:1</div>
                     <div class="stock-checks"><span>{c['checks_passed']}</span>/14 checks</div>
                 </div>
@@ -550,4 +535,4 @@ if st.button("▶  RUN SCAN"):
     if all_results:
         df_export = pd.DataFrame([r for r in all_results if r["status"] != "discard"])
         csv = df_export.to_csv(index=False).encode("utf-8")
-        st.download_button("↓ Export CSV", csv, f"swing_scan_{now.strftime('%Y%m%d')}.csv", "text/csv")
+        st.download_button("↓ Exportar CSV", csv, f"swing_scan_{now.strftime('%Y%m%d')}.csv", "text/csv")
