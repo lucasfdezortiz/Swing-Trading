@@ -10,23 +10,22 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap');
 
-html, body, .stApp { background-color: #0a0e1a !important; }
+html, body, .stApp { background-color: #f5f7fa !important; }
 
 .header {
-    background: linear-gradient(135deg, #0d1228 0%, #0a0e1a 100%);
-    border: 1px solid #1e3a5f;
-    border-top: 3px solid #2d7dd2;
-    border-radius: 12px;
+    background: #0a1628;
+    border-radius: 14px;
     padding: 2rem 2.5rem;
     margin-bottom: 1.5rem;
+    border-left: 5px solid #1a6fd4;
 }
 .header-eyebrow {
     font-family: 'Inter', sans-serif;
     font-size: 0.68rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: #2d7dd2;
+    color: #1a6fd4;
     margin-bottom: 0.5rem;
 }
 .header-title {
@@ -37,23 +36,24 @@ html, body, .stApp { background-color: #0a0e1a !important; }
     line-height: 1;
     margin-bottom: 0.4rem;
 }
-.header-title span { color: #2d7dd2; }
+.header-title span { color: #1a6fd4; }
 .header-info {
     font-family: 'Inter', sans-serif;
     font-size: 0.78rem;
-    color: #4a6080;
+    color: #8a9bb0;
     margin-top: 0.5rem;
 }
 
 .metrics {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 12px;
     margin-bottom: 1.8rem;
 }
 .metric {
-    background: #0d1228;
-    border: 1px solid #1e3a5f;
+    background: #ffffff;
+    border: 1px solid #dde3ed;
+    border-top: 3px solid #1a6fd4;
     border-radius: 10px;
     padding: 1.2rem;
     text-align: center;
@@ -61,41 +61,43 @@ html, body, .stApp { background-color: #0a0e1a !important; }
 .metric-val {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2.4rem;
-    color: #2d7dd2;
+    color: #1a6fd4;
     line-height: 1;
 }
-.metric-val.white { color: #ffffff; }
-.metric-val.yellow { color: #f0c040; }
+.metric-val.dark { color: #0a1628; }
+.metric-val.yellow { color: #d4900a; }
 .metric-lbl {
     font-family: 'Inter', sans-serif;
     font-size: 0.65rem;
     font-weight: 600;
-    color: #4a6080;
+    color: #8a9bb0;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-top: 6px;
 }
 
 .market-ok {
-    background: #0a1a0a;
-    border: 1px solid #1a4a1a;
-    border-left: 3px solid #2ecc71;
+    background: #f0faf4;
+    border: 1px solid #b8dfc8;
+    border-left: 4px solid #1a9c50;
     border-radius: 8px;
     padding: 0.8rem 1.2rem;
     font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    color: #2ecc71;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #1a5c35;
     margin-bottom: 1rem;
 }
 .market-warn {
-    background: #1a1200;
-    border: 1px solid #4a3a00;
-    border-left: 3px solid #f0c040;
+    background: #fdf8ec;
+    border: 1px solid #f0d890;
+    border-left: 4px solid #d4900a;
     border-radius: 8px;
     padding: 0.8rem 1.2rem;
     font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    color: #f0c040;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #7a5500;
     margin-bottom: 1rem;
 }
 
@@ -105,7 +107,7 @@ html, body, .stApp { background-color: #0a0e1a !important; }
     gap: 12px;
     margin: 1.8rem 0 1rem;
     padding-bottom: 0.7rem;
-    border-bottom: 1px solid #1e3a5f;
+    border-bottom: 2px solid #dde3ed;
 }
 .section-badge {
     font-family: 'Inter', sans-serif;
@@ -114,28 +116,28 @@ html, body, .stApp { background-color: #0a0e1a !important; }
     letter-spacing: 2px;
     padding: 4px 12px;
     border-radius: 4px;
-    background: #2d7dd2;
+    background: #1a6fd4;
     color: #ffffff;
     text-transform: uppercase;
 }
 .section-badge.watch {
-    background: transparent;
-    color: #f0c040;
-    border: 1px solid #f0c040;
+    background: #fdf8ec;
+    color: #d4900a;
+    border: 1px solid #f0d890;
 }
 .section-label {
     font-family: 'Inter', sans-serif;
     font-size: 0.85rem;
     font-weight: 600;
-    color: #ffffff;
-    letter-spacing: 2px;
+    color: #0a1628;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 .stock-card {
-    background: #0d1228;
-    border: 1px solid #1e3a5f;
-    border-left: 3px solid #2d7dd2;
+    background: #ffffff;
+    border: 1px solid #dde3ed;
+    border-left: 4px solid #1a6fd4;
     border-radius: 10px;
     padding: 1.3rem 1.5rem;
     margin-bottom: 0.8rem;
@@ -144,13 +146,13 @@ html, body, .stApp { background-color: #0a0e1a !important; }
     gap: 1.5rem;
     align-items: start;
 }
-.stock-card.watch { border-left-color: #f0c040; }
+.stock-card.watch { border-left-color: #d4900a; }
 
 .stock-rank {
     font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
     font-weight: 700;
-    color: #1e3a5f;
+    color: #c8d0dc;
     padding-top: 6px;
     min-width: 24px;
 }
@@ -158,18 +160,18 @@ html, body, .stApp { background-color: #0a0e1a !important; }
 .stock-ticker {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2rem;
-    color: #ffffff;
+    color: #0a1628;
     letter-spacing: 3px;
     line-height: 1;
     margin-bottom: 4px;
 }
-.stock-card.watch .stock-ticker { color: #f0c040; }
+.stock-card.watch .stock-ticker { color: #d4900a; }
 
 .stock-pattern {
     font-family: 'Inter', sans-serif;
     font-size: 0.72rem;
     font-weight: 500;
-    color: #4a6080;
+    color: #8a9bb0;
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -186,24 +188,26 @@ html, body, .stApp { background-color: #0a0e1a !important; }
     font-weight: 500;
     padding: 3px 10px;
     border-radius: 4px;
-    background: #0a0e1a;
-    border: 1px solid #1e3a5f;
-    color: #4a6080;
+    background: #f5f7fa;
+    border: 1px solid #dde3ed;
+    color: #5a6a80;
 }
 .pill.blue {
-    border-color: #2d7dd2;
-    color: #2d7dd2;
+    background: #eaf2fc;
+    border-color: #a8caf0;
+    color: #1a6fd4;
 }
-.pill.white {
-    border-color: #3a5070;
-    color: #a0b4c8;
+.pill.dark {
+    background: #f0f2f5;
+    border-color: #c8d0dc;
+    color: #0a1628;
 }
 
 .stock-right { text-align: right; min-width: 160px; }
 .stock-price {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.8rem;
-    color: #ffffff;
+    color: #0a1628;
     line-height: 1;
     margin-bottom: 4px;
 }
@@ -211,24 +215,24 @@ html, body, .stApp { background-color: #0a0e1a !important; }
     font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
-    color: #e74c3c;
+    color: #c0392b;
     margin-top: 3px;
 }
 .stock-target {
     font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
-    color: #2ecc71;
+    color: #1a9c50;
     margin-top: 3px;
 }
 .stock-rr {
     font-family: 'Inter', sans-serif;
     font-size: 0.72rem;
     font-weight: 700;
-    color: #2d7dd2;
+    color: #1a6fd4;
     margin-top: 5px;
-    background: #0a0e1a;
-    border: 1px solid #1e3a5f;
+    background: #eaf2fc;
+    border: 1px solid #a8caf0;
     padding: 2px 8px;
     border-radius: 4px;
     display: inline-block;
@@ -236,34 +240,34 @@ html, body, .stApp { background-color: #0a0e1a !important; }
 .stock-checks {
     font-family: 'Inter', sans-serif;
     font-size: 0.68rem;
-    color: #1e3a5f;
+    color: #c8d0dc;
     margin-top: 6px;
 }
-.stock-checks span { color: #2d7dd2; font-weight: 700; }
+.stock-checks span { color: #1a6fd4; font-weight: 700; }
 
 .failed-checks {
     font-family: 'Inter', sans-serif;
     font-size: 0.7rem;
-    color: #e74c3c;
+    color: #c0392b;
     margin-top: 8px;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .empty {
     text-align: center;
     padding: 2.5rem;
-    border: 1px dashed #1e3a5f;
+    border: 1px dashed #dde3ed;
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     font-size: 0.82rem;
     font-weight: 500;
-    color: #1e3a5f;
+    color: #8a9bb0;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 div[data-testid="stButton"] > button {
-    background: #2d7dd2 !important;
+    background: #0a1628 !important;
     color: #ffffff !important;
     font-family: 'Inter', sans-serif !important;
     font-size: 0.9rem !important;
@@ -275,12 +279,12 @@ div[data-testid="stButton"] > button {
     padding: 0.8rem !important;
     width: 100% !important;
 }
-div[data-testid="stButton"] > button:hover { opacity: 0.85 !important; }
+div[data-testid="stButton"] > button:hover { background: #1a6fd4 !important; }
 
 .stDownloadButton > button {
     background: transparent !important;
-    color: #2d7dd2 !important;
-    border: 1px solid #1e3a5f !important;
+    color: #1a6fd4 !important;
+    border: 1px solid #dde3ed !important;
     font-family: 'Inter', sans-serif !important;
     font-size: 0.78rem !important;
 }
@@ -298,7 +302,7 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-if st.button("📈  RUN SCAN — ESCANEAR HOY"):
+if st.button("📈  ESCANEAR HOY"):
     import sys
     sys.path.insert(0, "/mount/src/swing-trading")
 
@@ -448,7 +452,7 @@ if st.button("📈  RUN SCAN — ESCANEAR HOY"):
             <div class="metric-lbl">Analizados</div>
         </div>
         <div class="metric">
-            <div class="metric-val white" style="font-size:1.5rem">{now.strftime('%H:%M')}</div>
+            <div class="metric-val dark" style="font-size:1.5rem">{now.strftime('%H:%M')}</div>
             <div class="metric-lbl">Timestamp</div>
         </div>
     </div>
@@ -479,8 +483,8 @@ if st.button("📈  RUN SCAN — ESCANEAR HOY"):
                     <div class="stock-pills">
                         <span class="pill blue">Pivot ${c['pivot']}</span>
                         <span class="pill blue">Dist. {c['dist_pct']:+.1f}%</span>
-                        <span class="pill white">{c['shares']} acciones</span>
-                        <span class="pill white">${c['position_value']:,.0f} posición</span>
+                        <span class="pill dark">{c['shares']} acciones</span>
+                        <span class="pill dark">${c['position_value']:,.0f} posición</span>
                         <span class="pill">Earnings: {c['earnings_date']}</span>
                     </div>
                 </div>
@@ -489,7 +493,7 @@ if st.button("📈  RUN SCAN — ESCANEAR HOY"):
                     <div class="stock-stop">▼ Stop ${c['stop']} (-{stop_pct:.1f}%)</div>
                     <div class="stock-target">▲ Target ${c['target']} (+{target_pct:.1f}%)</div>
                     <div class="stock-rr">R:R {c['rr']:.1f}:1</div>
-                    <div class="stock-checks"><span>{c['checks_passed']}</span>/14 checks · Score {c['score']:.0f}</div>
+                    <div class="stock-checks"><span>{c['checks_passed']}</span>/14 · Score {c['score']:.0f}</div>
                 </div>
             </div>
             """
